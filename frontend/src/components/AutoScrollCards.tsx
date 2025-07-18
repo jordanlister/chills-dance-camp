@@ -18,9 +18,25 @@ const AutoScrollCards: React.FC<AutoScrollCardsProps> = ({
   const [startX, setStartX] = useState(0);
   const [scrollLeft, setScrollLeft] = useState(0);
   const [dragOffset, setDragOffset] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
+
+  // Detect mobile device
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 768 || 'ontouchstart' in window);
+    };
+    
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   const animate = useCallback(() => {
-    if (!scrollRef.current || isDragging || isPaused) return;
+    if (!scrollRef.current || isDragging) return;
+    
+    // On mobile, don't pause for hover - only for touch interaction
+    if (!isMobile && isPaused) return;
 
     const container = scrollRef.current;
     const maxScroll = container.scrollWidth - container.clientWidth;
@@ -32,7 +48,7 @@ const AutoScrollCards: React.FC<AutoScrollCardsProps> = ({
     }
 
     animationRef.current = requestAnimationFrame(animate);
-  }, [speed, isDragging, isPaused]);
+  }, [speed, isDragging, isPaused, isMobile]);
 
   useEffect(() => {
     animationRef.current = requestAnimationFrame(animate);
@@ -84,14 +100,16 @@ const AutoScrollCards: React.FC<AutoScrollCardsProps> = ({
 
   // Touch events for mobile
   const handleTouchStart = (e: React.TouchEvent) => {
-    setIsPaused(true);
-    setIsDragging(true);
-    setStartX(e.touches[0].pageX - (scrollRef.current?.offsetLeft || 0));
-    setScrollLeft(scrollRef.current?.scrollLeft || 0);
+    if (isMobile) {
+      // Only pause temporarily while actively touching
+      setIsDragging(true);
+      setStartX(e.touches[0].pageX - (scrollRef.current?.offsetLeft || 0));
+      setScrollLeft(scrollRef.current?.scrollLeft || 0);
+    }
   };
 
   const handleTouchMove = (e: React.TouchEvent) => {
-    if (!isDragging || !scrollRef.current) return;
+    if (!isDragging || !scrollRef.current || !isMobile) return;
     
     e.preventDefault(); // Prevent page scrolling
     const x = e.touches[0].pageX - (scrollRef.current.offsetLeft || 0);
@@ -103,18 +121,17 @@ const AutoScrollCards: React.FC<AutoScrollCardsProps> = ({
   };
 
   const handleTouchEnd = () => {
-    setIsDragging(false);
-    // Resume auto-scroll after a delay
-    setTimeout(() => {
-      setIsPaused(false);
-    }, 2000);
+    if (isMobile) {
+      setIsDragging(false);
+      // Auto-scroll resumes immediately since we don't use isPaused for mobile
+    }
   };
 
   return (
     <div 
       className="relative"
-      onMouseEnter={() => setIsPaused(true)}
-      onMouseLeave={() => setIsPaused(false)}
+      onMouseEnter={() => !isMobile && setIsPaused(true)}
+      onMouseLeave={() => !isMobile && setIsPaused(false)}
     >
       <div 
         className="overflow-hidden relative"
