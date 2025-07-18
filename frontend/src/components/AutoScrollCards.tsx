@@ -15,7 +15,7 @@ const AutoScrollCards: React.FC<AutoScrollCardsProps> = ({
   const [isDragging, setIsDragging] = useState(false);
   const [isPaused, setIsPaused] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
-  const intervalRef = useRef<NodeJS.Timeout | null>(null);
+  const intervalRef = useRef<number | null>(null);
 
   // Detect mobile device
   useEffect(() => {
