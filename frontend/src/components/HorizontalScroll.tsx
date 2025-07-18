@@ -97,7 +97,8 @@ const HorizontalScroll: React.FC<HorizontalScrollProps> = ({ children, className
       </div>
       
       {/* Custom scrollbar styling */}
-      <style jsx>{`
+      <style dangerouslySetInnerHTML={{
+        __html: `
         div::-webkit-scrollbar {
           height: 8px;
         }
@@ -112,7 +113,7 @@ const HorizontalScroll: React.FC<HorizontalScrollProps> = ({ children, className
         div::-webkit-scrollbar-thumb:hover {
           background: rgba(255, 107, 107, 0.5);
         }
-      `}</style>
+      `}} />
     </div>
   );
 };

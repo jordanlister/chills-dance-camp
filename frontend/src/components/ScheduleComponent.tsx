@@ -3,6 +3,16 @@ import { useState } from 'react';
 const ScheduleComponent: React.FC = () => {
   const [activeDay, setActiveDay] = useState(0);
 
+  // Define the event type
+  interface ScheduleEvent {
+    time: string;
+    title: string;
+    instructor?: string;
+    type: string;
+    note?: string;
+    subtitle?: string;
+  }
+
   // Static schedule data based on the HTML design
   const scheduleData = {
     day1: {
@@ -19,7 +29,7 @@ const ScheduleComponent: React.FC = () => {
         { time: '4:30 PM - 6:30 PM', title: 'Lecture: Journey to Your Dance Signature', instructor: 'Marissa Heart, Venetia Zipporah, Taisha Monique', type: 'special' },
         { time: '7:00 PM - 8:30 PM', title: 'Heels Feels', instructor: 'Hector Kramer', type: 'class' },
         { time: '8:30 PM', title: 'Interview: Hector Kramer', note: 'After class', type: 'interview' },
-      ]
+      ] as ScheduleEvent[]
     },
     day2: {
       name: 'Saturday, July 19',
@@ -34,7 +44,7 @@ const ScheduleComponent: React.FC = () => {
         { time: '3:30 PM', title: 'Interview: Nika Chill', note: 'After class (during lunch)', type: 'interview' },
         { time: '4:30 PM - 6:30 PM', title: 'Lecture: From Passion to Profession', instructor: 'Nicole Kirkland, Nika Chill, Mari G', subtitle: 'Women Who Built Their Legacy', type: 'special' },
         { time: '7:00 PM - 8:30 PM', title: 'Street Heels', instructor: 'Nicole Kirkland + Zonta (Collab Class)', type: 'class' },
-      ]
+      ] as ScheduleEvent[]
     },
     day3: {
       name: 'Sunday, July 20',
@@ -50,7 +60,7 @@ const ScheduleComponent: React.FC = () => {
         { time: '4:30 PM - 6:00 PM', title: 'Heels Contemporary', instructor: 'Skyler Hostetler', type: 'class' },
         { time: '6:30 PM - 8:30 PM', title: 'Chills Conversation', type: 'special' },
         { time: '6:30 PM', title: 'Interview: Skyler Hostetler', note: 'After class (overlaps with Chills Conversation)', type: 'interview' },
-      ]
+      ] as ScheduleEvent[]
     }
   };
 

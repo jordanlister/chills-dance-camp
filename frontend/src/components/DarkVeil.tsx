@@ -102,7 +102,7 @@ export default function DarkVeil({
     if (!parent) return;
 
     let renderer: Renderer;
-    let gl: WebGLRenderingContext;
+    let gl: any;
     let geometry: Triangle;
     let program: Program;
     let mesh: Mesh;
@@ -113,7 +113,7 @@ export default function DarkVeil({
         canvas,
       });
 
-      gl = renderer.gl;
+      gl = renderer.gl as any;
       geometry = new Triangle(gl);
 
       program = new Program(gl, {

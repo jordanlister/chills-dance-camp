@@ -29,10 +29,14 @@ const RegisterModal: React.FC<RegisterModalProps> = ({ isOpen, onClose, onSwitch
     }
 
     try {
+      const [firstName, ...lastNameParts] = formData.name.split(' ');
+      const lastName = lastNameParts.join(' ') || '';
+      
       await register({
         email: formData.email,
         password: formData.password,
-        name: formData.name,
+        firstName,
+        lastName,
         role: formData.role
       });
       onClose();
@@ -42,9 +46,10 @@ const RegisterModal: React.FC<RegisterModalProps> = ({ isOpen, onClose, onSwitch
   };
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+    const { name, value } = e.target;
     setFormData({
       ...formData,
-      [e.target.name]: e.target.value
+      [name]: name === 'role' ? value as UserRole : value
     });
   };
 

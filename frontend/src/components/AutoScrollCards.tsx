@@ -12,7 +12,7 @@ const AutoScrollCards: React.FC<AutoScrollCardsProps> = ({
   className = '' 
 }) => {
   const scrollRef = useRef<HTMLDivElement>(null);
-  const animationRef = useRef<number>();
+  const animationRef = useRef<number | null>(null);
   const [isPaused, setIsPaused] = useState(false);
   const [isDragging, setIsDragging] = useState(false);
   const [startX, setStartX] = useState(0);
@@ -136,11 +136,12 @@ const AutoScrollCards: React.FC<AutoScrollCardsProps> = ({
       </div>
       
       {/* Hide scrollbar completely */}
-      <style jsx>{`
+      <style dangerouslySetInnerHTML={{
+        __html: `
         div::-webkit-scrollbar {
           display: none;
         }
-      `}</style>
+      `}} />
     </div>
   );
 };
