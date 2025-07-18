@@ -14,6 +14,7 @@ import LandingPage from './pages/LandingPage';
 import AboutPage from './pages/AboutPage';
 import InstructorsPage from './pages/InstructorsPage';
 import VenuePage from './pages/VenuePage';
+import PoliciesPage from './pages/PoliciesPage';
 import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
 import DashboardPage from './pages/DashboardPage';
@@ -97,6 +98,10 @@ function App() {
           <Route 
             path="/venue" 
             element={<VenuePage />} 
+          />
+          <Route 
+            path="/policies" 
+            element={<PoliciesPage />} 
           />
           <Route 
             path="/login" 

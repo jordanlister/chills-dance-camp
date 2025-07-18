@@ -35,7 +35,7 @@ const PublicNavigation: React.FC = () => {
     { name: 'Instructors', path: '/instructors', isLink: true },
     { name: 'Venue', path: '/venue', isLink: true },
     { name: 'Schedule', path: '/schedule', isLink: true },
-    { name: 'Register', action: handleRegisterClick, isLink: false },
+    { name: 'Policies', path: '/policies', isLink: true },
     { name: 'Login', action: handleLoginClick, isLink: false },
   ];
 
