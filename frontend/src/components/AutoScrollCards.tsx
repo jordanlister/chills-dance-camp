@@ -20,7 +20,7 @@ const AutoScrollCards: React.FC<AutoScrollCardsProps> = ({
   const [dragOffset, setDragOffset] = useState(0);
 
   const animate = useCallback(() => {
-    if (!scrollRef.current || isDragging) return;
+    if (!scrollRef.current || isDragging || isPaused) return;
 
     const container = scrollRef.current;
     const maxScroll = container.scrollWidth - container.clientWidth;
@@ -32,7 +32,7 @@ const AutoScrollCards: React.FC<AutoScrollCardsProps> = ({
     }
 
     animationRef.current = requestAnimationFrame(animate);
-  }, [speed, isDragging]);
+  }, [speed, isDragging, isPaused]);
 
   useEffect(() => {
     animationRef.current = requestAnimationFrame(animate);
@@ -84,6 +84,7 @@ const AutoScrollCards: React.FC<AutoScrollCardsProps> = ({
 
   // Touch events for mobile
   const handleTouchStart = (e: React.TouchEvent) => {
+    setIsPaused(true);
     setIsDragging(true);
     setStartX(e.touches[0].pageX - (scrollRef.current?.offsetLeft || 0));
     setScrollLeft(scrollRef.current?.scrollLeft || 0);
@@ -92,8 +93,9 @@ const AutoScrollCards: React.FC<AutoScrollCardsProps> = ({
   const handleTouchMove = (e: React.TouchEvent) => {
     if (!isDragging || !scrollRef.current) return;
     
+    e.preventDefault(); // Prevent page scrolling
     const x = e.touches[0].pageX - (scrollRef.current.offsetLeft || 0);
-    const walk = (x - startX) * 2;
+    const walk = (x - startX) * 1.5; // Reduce sensitivity for smoother touch
     const newScrollLeft = scrollLeft - walk;
     
     const maxScroll = scrollRef.current.scrollWidth - scrollRef.current.clientWidth;
@@ -102,10 +104,18 @@ const AutoScrollCards: React.FC<AutoScrollCardsProps> = ({
 
   const handleTouchEnd = () => {
     setIsDragging(false);
+    // Resume auto-scroll after a delay
+    setTimeout(() => {
+      setIsPaused(false);
+    }, 2000);
   };
 
   return (
-    <div className="relative">
+    <div 
+      className="relative"
+      onMouseEnter={() => setIsPaused(true)}
+      onMouseLeave={() => setIsPaused(false)}
+    >
       <div 
         className="overflow-hidden relative"
         style={{ 
