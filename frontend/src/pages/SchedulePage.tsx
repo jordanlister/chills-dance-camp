@@ -105,12 +105,12 @@ const SchedulePage: React.FC = () => {
         </div>
 
       {/* Day Tabs */}
-      <div className="flex gap-5 mb-10 justify-center animate-slide-in">
+      <div className="flex flex-col sm:flex-row gap-3 sm:gap-5 mb-10 justify-center animate-slide-in px-4">
         {days.map((day, index) => (
           <button
             key={index}
             onClick={() => setActiveDay(index)}
-            className={`px-8 py-3 rounded-full border transition-all duration-300 font-medium whitespace-nowrap ${
+            className={`px-4 sm:px-8 py-3 rounded-full border transition-all duration-300 font-medium text-sm sm:text-base whitespace-nowrap ${
               activeDay === index
                 ? 'bg-gradient-to-r from-primary-500 to-primary-700 border-transparent text-white transform scale-105'
                 : 'bg-white bg-opacity-5 border-white border-opacity-10 hover:bg-opacity-10 hover:border-opacity-20 hover:transform hover:-translate-y-1'

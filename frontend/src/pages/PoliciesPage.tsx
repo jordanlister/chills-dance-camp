@@ -18,12 +18,12 @@ const PoliciesPage: React.FC = () => {
     <div className="bg-white bg-opacity-5 rounded-2xl border border-white border-opacity-10 backdrop-blur-md mb-6">
       <button
         onClick={() => toggleSection(id)}
-        className="w-full p-6 text-left focus:outline-none focus:ring-2 focus:ring-primary-400 focus:ring-opacity-50 rounded-2xl"
+        className="w-full p-4 sm:p-6 text-left focus:outline-none focus:ring-2 focus:ring-primary-400 focus:ring-opacity-50 rounded-2xl min-h-[48px]"
       >
         <div className="flex justify-between items-center">
-          <h3 className="text-xl font-bold text-primary-400">{title}</h3>
+          <h3 className="text-lg sm:text-xl font-bold text-primary-400 pr-4">{title}</h3>
           <svg
-            className={`w-6 h-6 text-primary-400 transform transition-transform duration-300 ${
+            className={`w-5 h-5 sm:w-6 sm:h-6 text-primary-400 transform transition-transform duration-300 flex-shrink-0 ${
               activeSection === id ? 'rotate-180' : 'rotate-0'
             }`}
             fill="none"
@@ -35,8 +35,8 @@ const PoliciesPage: React.FC = () => {
         </div>
       </button>
       {activeSection === id && (
-        <div className="px-6 pb-6">
-          <div className="text-gray-300 leading-relaxed space-y-4">
+        <div className="px-4 sm:px-6 pb-4 sm:pb-6">
+          <div className="text-gray-300 leading-relaxed space-y-4 text-sm sm:text-base">
             {content}
           </div>
         </div>

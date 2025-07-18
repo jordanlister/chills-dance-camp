@@ -56,7 +56,7 @@ const RegisterModal: React.FC<RegisterModalProps> = ({ isOpen, onClose, onSwitch
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-[60] flex items-center justify-center p-4" style={{ paddingTop: '80px' }}>
+    <div className="fixed inset-0 z-[60] flex items-center justify-center p-4" style={{ paddingTop: '60px', paddingBottom: '20px' }}>
       {/* Backdrop */}
       <div 
         className="absolute inset-0 bg-black/80 backdrop-blur-xl"
@@ -68,7 +68,7 @@ const RegisterModal: React.FC<RegisterModalProps> = ({ isOpen, onClose, onSwitch
       
       {/* Modal */}
       <div 
-        className="relative w-full max-w-lg bg-black/70 backdrop-blur-2xl rounded-2xl border border-white/20 p-8 shadow-2xl my-auto"
+        className="relative w-full max-w-sm sm:max-w-lg bg-black/70 backdrop-blur-2xl rounded-2xl border border-white/20 p-6 sm:p-8 shadow-2xl my-auto mx-4"
         style={{
           animation: 'modalSlideIn 0.4s ease-out',
           boxShadow: '0 25px 50px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.1)',

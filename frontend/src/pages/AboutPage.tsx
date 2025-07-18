@@ -52,15 +52,15 @@ const AboutPage: React.FC = () => {
           <GradientText 
             colors={["#ff6b6b", "#ee5a6f", "#c44569", "#9a4560", "#ff6b6b"]}
             animationSpeed={3}
-            className="text-5xl md:text-6xl font-bold mb-6"
+            className="text-4xl sm:text-5xl md:text-6xl font-bold mb-6"
           >
             ABOUT US
           </GradientText>
-          <div className="max-w-3xl mx-auto">
-            <p className="text-xl md:text-2xl mb-8 text-gray-300 leading-relaxed">
+          <div className="max-w-3xl mx-auto px-4 sm:px-0">
+            <p className="text-lg sm:text-xl md:text-2xl mb-8 text-gray-300 leading-relaxed">
               Welcome to Chills Dance Camp!
             </p>
-            <p className="text-lg text-gray-400 leading-relaxed mb-12">
+            <p className="text-base sm:text-lg text-gray-400 leading-relaxed mb-12">
               We are a passionate community dedicated to empowering dancers through movement, 
               self-expression, and connection. Our mission is to create transformative experiences 
               that celebrate the art of dance while fostering personal growth and confidence.
@@ -71,29 +71,29 @@ const AboutPage: React.FC = () => {
 
       {/* Mission Section */}
       <div className="py-20">
-        <div className="max-w-6xl mx-auto px-4">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            <div>
+        <div className="max-w-6xl mx-auto px-4 sm:px-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center">
+            <div className="order-2 md:order-1">
               <GradientText 
                 colors={["#ff6b6b", "#ee5a6f", "#c44569", "#9a4560", "#ff6b6b"]}
                 animationSpeed={4}
-                className="text-4xl font-bold mb-6"
+                className="text-3xl sm:text-4xl font-bold mb-6"
               >
                 MISSION
               </GradientText>
-              <p className="text-lg text-gray-300 leading-relaxed mb-6">
+              <p className="text-base sm:text-lg text-gray-300 leading-relaxed mb-6">
                 We believe in the power of movement to heal, inspire, and unite. Our mission is to provide 
                 a safe and supportive environment where dancers of all levels can explore their artistry, 
                 build confidence, and connect with like-minded individuals.
               </p>
-              <p className="text-lg text-gray-300 leading-relaxed">
+              <p className="text-base sm:text-lg text-gray-300 leading-relaxed">
                 Through expert instruction, innovative programming, and a commitment to inclusivity, 
                 we aim to elevate the dance experience and nurture the next generation of performers.
               </p>
             </div>
-            <div className="bg-white bg-opacity-5 rounded-2xl border border-white border-opacity-10 p-8 backdrop-blur-md">
-              <h3 className="text-2xl font-bold mb-4 text-primary-400">Our Vision</h3>
-              <p className="text-gray-300 leading-relaxed">
+            <div className="bg-white bg-opacity-5 rounded-2xl border border-white border-opacity-10 p-6 sm:p-8 backdrop-blur-md order-1 md:order-2">
+              <h3 className="text-xl sm:text-2xl font-bold mb-4 text-primary-400">Our Vision</h3>
+              <p className="text-sm sm:text-base text-gray-300 leading-relaxed">
                 To be the premier destination for dance education and community building, 
                 where passion meets purpose and every dancer finds their voice through movement.
               </p>
@@ -104,11 +104,11 @@ const AboutPage: React.FC = () => {
 
       {/* Our Goal Section */}
       <div className="py-20">
-        <div className="max-w-6xl mx-auto px-4">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            <div className="bg-white bg-opacity-5 rounded-2xl border border-white border-opacity-10 p-8 backdrop-blur-md">
-              <h3 className="text-2xl font-bold mb-4 text-primary-400">Our Impact</h3>
-              <p className="text-gray-300 leading-relaxed">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center">
+            <div className="bg-white bg-opacity-5 rounded-2xl border border-white border-opacity-10 p-6 sm:p-8 backdrop-blur-md">
+              <h3 className="text-xl sm:text-2xl font-bold mb-4 text-primary-400">Our Impact</h3>
+              <p className="text-sm sm:text-base text-gray-300 leading-relaxed">
                 Since our founding, we have touched the lives of thousands of dancers worldwide, 
                 creating lasting connections and fostering artistic growth that extends far beyond 
                 the studio walls.
@@ -118,16 +118,16 @@ const AboutPage: React.FC = () => {
               <GradientText 
                 colors={["#ff6b6b", "#ee5a6f", "#c44569", "#9a4560", "#ff6b6b"]}
                 animationSpeed={4}
-                className="text-4xl font-bold mb-6"
+                className="text-3xl sm:text-4xl font-bold mb-6"
               >
                 OUR GOAL
               </GradientText>
-              <p className="text-lg text-gray-300 leading-relaxed mb-6">
+              <p className="text-base sm:text-lg text-gray-300 leading-relaxed mb-6">
                 We strive to create transformative dance experiences that empower individuals, 
                 strengthen communities, and celebrate the diversity of movement. Our goal is to 
                 provide world-class instruction while maintaining an inclusive, supportive environment.
               </p>
-              <p className="text-lg text-gray-300 leading-relaxed">
+              <p className="text-base sm:text-lg text-gray-300 leading-relaxed">
                 Through continuous innovation and dedication to excellence, we aim to set new standards 
                 in dance education and community engagement, inspiring dancers to reach their full potential.
               </p>

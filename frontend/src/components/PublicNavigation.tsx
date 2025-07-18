@@ -73,7 +73,7 @@ const PublicNavigation: React.FC = () => {
 
           {/* Mobile Menu Button */}
           <button
-            className="md:hidden text-white p-2"
+            className="md:hidden text-white p-3 min-h-[48px] min-w-[48px] flex items-center justify-center"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
           >
             <svg
@@ -110,7 +110,7 @@ const PublicNavigation: React.FC = () => {
                   <Link
                     key={item.name}
                     to={item.path!}
-                    className="text-gray-300 hover:text-white transition-colors duration-200 font-medium px-4 py-2 rounded-lg hover:bg-white hover:bg-opacity-5"
+                    className="text-gray-300 hover:text-white transition-colors duration-200 font-medium px-4 py-4 rounded-lg hover:bg-white hover:bg-opacity-5 min-h-[48px] flex items-center"
                     onClick={() => setIsMenuOpen(false)}
                   >
                     {item.name}
@@ -119,7 +119,7 @@ const PublicNavigation: React.FC = () => {
                   <button
                     key={item.name}
                     onClick={item.action}
-                    className="text-gray-300 hover:text-white transition-colors duration-200 font-medium px-4 py-2 rounded-lg hover:bg-white hover:bg-opacity-5 text-left"
+                    className="text-gray-300 hover:text-white transition-colors duration-200 font-medium px-4 py-4 rounded-lg hover:bg-white hover:bg-opacity-5 text-left min-h-[48px] w-full"
                   >
                     {item.name}
                   </button>

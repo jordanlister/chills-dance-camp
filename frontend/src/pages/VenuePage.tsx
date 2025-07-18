@@ -262,20 +262,20 @@ const VenuePage: React.FC = () => {
             </p>
           </div>
           
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            <div className="bg-white bg-opacity-5 rounded-2xl border border-white border-opacity-10 p-8 backdrop-blur-md">
-              <h3 className="text-2xl font-bold mb-6 text-primary-400">Venue Address</h3>
-              <div className="space-y-4 mb-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center">
+            <div className="bg-white bg-opacity-5 rounded-2xl border border-white border-opacity-10 p-6 sm:p-8 backdrop-blur-md">
+              <h3 className="text-xl sm:text-2xl font-bold mb-4 sm:mb-6 text-primary-400">Venue Address</h3>
+              <div className="space-y-4 mb-6 sm:mb-8">
                 <div className="flex items-start">
                   <svg className="w-5 h-5 text-primary-400 mr-3 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                   </svg>
                   <div>
-                    <p className="text-white font-semibold">Mihran K. Studios</p>
-                    <p className="text-gray-300">334 N Victory Blvd</p>
-                    <p className="text-gray-300">Burbank, CA 91502</p>
-                    <p className="text-gray-300">United States</p>
+                    <p className="text-white font-semibold text-sm sm:text-base">Mihran K. Studios</p>
+                    <p className="text-gray-300 text-sm sm:text-base">334 N Victory Blvd</p>
+                    <p className="text-gray-300 text-sm sm:text-base">Burbank, CA 91502</p>
+                    <p className="text-gray-300 text-sm sm:text-base">United States</p>
                   </div>
                 </div>
               </div>
@@ -284,10 +284,10 @@ const VenuePage: React.FC = () => {
                 href="https://www.google.com/maps/dir/?api=1&destination=334+N+Victory+Blvd,+Burbank,+CA+91502"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-primary-500 to-primary-700 rounded-full font-medium text-white hover:transform hover:scale-105 transition-all duration-300"
+                className="inline-flex items-center px-4 sm:px-6 py-3 bg-gradient-to-r from-primary-500 to-primary-700 rounded-full font-medium text-white hover:transform hover:scale-105 transition-all duration-300 text-sm sm:text-base min-h-[48px]"
                 style={{ boxShadow: '0 10px 30px rgba(255, 107, 107, 0.3)' }}
               >
-                <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-4 h-4 sm:w-5 sm:h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7" />
                 </svg>
                 Get Directions
@@ -295,7 +295,7 @@ const VenuePage: React.FC = () => {
             </div>
             
             <div className="bg-white bg-opacity-5 rounded-2xl border border-white border-opacity-10 p-2 backdrop-blur-md">
-              <div className="relative w-full h-80 rounded-xl overflow-hidden">
+              <div className="relative w-full h-64 sm:h-80 rounded-xl overflow-hidden">
                 <iframe
                   src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3305.1234567890!2d-118.3097!3d34.1808!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2z334+N+Victory+Blvd%2C+Burbank%2C+CA+91502!5e0!3m2!1sen!2sus!4v1234567890"
                   width="100%"

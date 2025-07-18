@@ -148,11 +148,11 @@ const LandingPage: React.FC = () => {
           isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
         }`}>
           {/* Hero Image */}
-          <div className="mb-8">
+          <div className="mb-8 px-4 sm:px-0">
             <img 
               src={heroImage} 
               alt="Chills Dance Camp - Industry Leading Instructors"
-              className="w-full max-w-2xl mx-auto rounded-2xl shadow-2xl"
+              className="w-full max-w-xs sm:max-w-lg md:max-w-2xl mx-auto rounded-2xl shadow-2xl"
               style={{
                 animation: 'slideIn 0.8s ease-out 0.2s both',
                 boxShadow: '0 25px 50px rgba(255, 107, 107, 0.2)'
@@ -161,33 +161,33 @@ const LandingPage: React.FC = () => {
           </div>
           
           {/* Welcome Text with Gradient */}
-          <div className="mb-8">
+          <div className="mb-8 px-4 sm:px-0">
             <GradientText 
               colors={["#ff6b6b", "#ee5a6f", "#c44569", "#9a4560", "#ff6b6b"]}
               animationSpeed={3}
-              className="text-3xl md:text-4xl font-bold mb-4"
+              className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4"
             >
               WELCOME TO CHILLS DANCE CAMP
             </GradientText>
-            <h2 className="text-2xl md:text-3xl font-bold text-white mb-6" style={{ fontFamily: 'Poppins, sans-serif' }}>
+            <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-white mb-6" style={{ fontFamily: 'Poppins, sans-serif' }}>
               Move. Express. Transform.
             </h2>
           </div>
           
           {/* Vamp Heels Partnership */}
-          <div className="max-w-3xl mx-auto mb-10">
-            <div className="bg-white bg-opacity-5 rounded-2xl border border-white border-opacity-10 p-8 max-w-2xl mx-auto mb-8">
+          <div className="max-w-3xl mx-auto mb-10 px-4 sm:px-0">
+            <div className="bg-white bg-opacity-5 rounded-2xl border border-white border-opacity-10 p-6 sm:p-8 max-w-2xl mx-auto mb-8">
               <div className="flex items-center justify-center mb-6">
                 <img 
                   src={vampLogo} 
                   alt="Vamp Heels" 
-                  className="h-16 w-auto"
+                  className="h-12 sm:h-16 w-auto"
                   style={{
                     filter: 'drop-shadow(0 4px 8px rgba(255, 107, 107, 0.3))'
                   }}
                 />
               </div>
-              <p className="text-gray-300 leading-relaxed text-center">
+              <p className="text-gray-300 leading-relaxed text-center text-sm sm:text-base">
                 We're proud to partner with <span className="text-primary-400 font-semibold">Vamp Heels</span>, 
                 a premier brand specializing in high-quality dance shoes expertly crafted for heels dancers. 
                 Designed to amplify your movement and support every step, Vamp Heels combines style, comfort, 
@@ -198,23 +198,23 @@ const LandingPage: React.FC = () => {
             
             {/* Camp Details */}
             <div className="text-center mb-10">
-              <div className="flex flex-col sm:flex-row justify-center items-center gap-8 sm:gap-16">
-                <div>
-                  <h3 className="text-primary-400 font-semibold text-lg">Camp Dates:</h3>
-                  <p className="text-gray-300 text-lg">July 18-20, 2025</p>
+              <div className="flex flex-col space-y-4 sm:flex-row sm:justify-center sm:items-center sm:gap-8 md:gap-16 sm:space-y-0">
+                <div className="text-center">
+                  <h3 className="text-primary-400 font-semibold text-base sm:text-lg">Camp Dates:</h3>
+                  <p className="text-gray-300 text-base sm:text-lg">July 18-20, 2025</p>
                 </div>
-                <div>
-                  <h3 className="text-primary-400 font-semibold text-lg">Location:</h3>
-                  <p className="text-gray-300 text-lg">Los Angeles, USA</p>
+                <div className="text-center">
+                  <h3 className="text-primary-400 font-semibold text-base sm:text-lg">Location:</h3>
+                  <p className="text-gray-300 text-base sm:text-lg">Los Angeles, USA</p>
                 </div>
               </div>
             </div>
           </div>
           
-          <div className="flex flex-col sm:flex-row gap-6 justify-center py-8">
+          <div className="flex flex-col gap-4 sm:flex-row sm:gap-6 justify-center py-8 px-4 sm:px-0">
             <button 
               onClick={() => setShowRegisterModal(true)}
-              className="px-8 py-4 rounded-full font-medium text-white hover:transform hover:scale-105 transition-all duration-300 relative"
+              className="px-6 py-4 sm:px-8 rounded-full font-medium text-white hover:transform hover:scale-105 transition-all duration-300 relative min-h-[48px]"
               style={{
                 background: 'linear-gradient(135deg, rgba(255, 107, 107, 0.3), rgba(238, 90, 111, 0.4))',
                 backdropFilter: 'blur(20px)',
@@ -228,7 +228,7 @@ const LandingPage: React.FC = () => {
             </button>
             <Link 
               to="/schedule"
-              className="px-8 py-4 rounded-full font-medium text-white hover:transform hover:scale-105 transition-all duration-300 relative"
+              className="px-6 py-4 sm:px-8 rounded-full font-medium text-white hover:transform hover:scale-105 transition-all duration-300 relative min-h-[48px] flex items-center justify-center"
               style={{
                 background: 'rgba(255, 255, 255, 0.05)',
                 backdropFilter: 'blur(20px)',
@@ -247,21 +247,21 @@ const LandingPage: React.FC = () => {
       {/* Features Section */}
       <div className="py-20">
         <div className="max-w-6xl mx-auto px-4">
-          <div className="text-center mb-16">
+          <div className="text-center mb-16 px-4 sm:px-0">
             <GradientText 
               colors={["#ff6b6b", "#ee5a6f", "#c44569", "#9a4560", "#ff6b6b"]}
               animationSpeed={5}
-              className="text-4xl font-bold mb-6"
+              className="text-2xl sm:text-3xl md:text-4xl font-bold mb-6"
             >
               Why Embark on This Journey with Us?
             </GradientText>
-            <p className="text-lg text-gray-300 leading-relaxed max-w-3xl mx-auto mb-8">
+            <p className="text-base sm:text-lg text-gray-300 leading-relaxed max-w-3xl mx-auto mb-8">
               Step into three days of powerful training, self-expression, and connection. With global energy, 
               top-tier instructors, and a supportive community, technique, and community come together — 
               creating a dance experience you'll never forget.
             </p>
           </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
             {features.map((feature, index) => (
               <div
                 key={index}
@@ -296,7 +296,7 @@ const LandingPage: React.FC = () => {
             {instructors.map((instructor, index) => (
               <div
                 key={index}
-                className="flex-shrink-0 w-80 text-center p-6 bg-black bg-opacity-60 rounded-2xl border border-white border-opacity-20 hover:bg-opacity-80 transition-all duration-300 hover:transform hover:-translate-y-2"
+                className="flex-shrink-0 w-72 sm:w-80 text-center p-4 sm:p-6 bg-black bg-opacity-60 rounded-2xl border border-white border-opacity-20 hover:bg-opacity-80 transition-all duration-300 hover:transform hover:-translate-y-2"
                 style={{
                   animation: `slideIn 0.6s ease-out ${0.15 * index}s both`,
                   backdropFilter: 'blur(20px)',
@@ -304,10 +304,10 @@ const LandingPage: React.FC = () => {
                   boxShadow: '0 8px 32px rgba(0, 0, 0, 0.3)'
                 }}
               >
-                {instructor.image && <div className="text-6xl mb-4">{instructor.image}</div>}
-                <h3 className="text-xl font-semibold mb-2 text-white">{instructor.name}</h3>
-                <p className="text-primary-400 font-medium mb-3">{instructor.specialty}</p>
-                <p className="text-gray-400 text-sm leading-relaxed">{instructor.bio}</p>
+                {instructor.image && <div className="text-5xl sm:text-6xl mb-3 sm:mb-4">{instructor.image}</div>}
+                <h3 className="text-lg sm:text-xl font-semibold mb-2 text-white">{instructor.name}</h3>
+                <p className="text-primary-400 font-medium mb-2 sm:mb-3 text-sm sm:text-base">{instructor.specialty}</p>
+                <p className="text-gray-400 text-xs sm:text-sm leading-relaxed">{instructor.bio}</p>
               </div>
             ))}
           </AutoScrollCards>

@@ -27,7 +27,7 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose, onSwitchToRegi
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-[60] flex items-center justify-center p-4" style={{ paddingTop: '80px' }}>
+    <div className="fixed inset-0 z-[60] flex items-center justify-center p-4" style={{ paddingTop: '60px', paddingBottom: '20px' }}>
       {/* Backdrop */}
       <div 
         className="absolute inset-0 bg-black/80 backdrop-blur-xl"
@@ -39,11 +39,11 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose, onSwitchToRegi
       
       {/* Modal */}
       <div 
-        className="relative w-full max-w-md bg-black/70 backdrop-blur-2xl rounded-2xl border border-white/20 p-8 shadow-2xl my-auto"
+        className="relative w-full max-w-sm sm:max-w-md bg-black/70 backdrop-blur-2xl rounded-2xl border border-white/20 p-6 sm:p-8 shadow-2xl my-auto mx-4"
         style={{
           animation: 'modalSlideIn 0.4s ease-out',
           boxShadow: '0 25px 50px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.1)',
-          maxHeight: 'calc(100vh - 160px)',
+          maxHeight: 'calc(100vh - 120px)',
           overflowY: 'auto',
           background: 'linear-gradient(135deg, rgba(0, 0, 0, 0.8), rgba(30, 30, 30, 0.85))'
         }}

@@ -129,18 +129,18 @@ const InstructorsPage: React.FC = () => {
             </GradientText>
           </div>
           
-          <div className="max-w-4xl mx-auto">
-            <div className="text-center p-12 bg-gradient-to-br from-primary-500/20 to-primary-700/20 rounded-3xl border-2 border-primary-400/30 hover:border-primary-400/50 transition-all duration-300 hover:transform hover:-translate-y-2 backdrop-blur-md">
-              <div className="mb-8">
-                <div className="inline-block p-6 bg-primary-500/30 rounded-full mb-6">
-                  <svg className="w-12 h-12 text-primary-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <div className="max-w-4xl mx-auto px-4 sm:px-0">
+            <div className="text-center p-6 sm:p-8 md:p-12 bg-gradient-to-br from-primary-500/20 to-primary-700/20 rounded-3xl border-2 border-primary-400/30 hover:border-primary-400/50 transition-all duration-300 hover:transform hover:-translate-y-2 backdrop-blur-md">
+              <div className="mb-6 sm:mb-8">
+                <div className="inline-block p-4 sm:p-6 bg-primary-500/30 rounded-full mb-4 sm:mb-6">
+                  <svg className="w-8 h-8 sm:w-12 sm:h-12 text-primary-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
                   </svg>
                 </div>
-                <h2 className="text-3xl font-bold mb-2 text-white">{founder.name}</h2>
-                <p className="text-xl text-primary-300 font-semibold mb-4">{founder.title}</p>
-                <p className="text-lg text-primary-400 font-medium mb-6">{founder.specialty}</p>
-                <p className="text-gray-300 text-lg leading-relaxed max-w-2xl mx-auto">{founder.bio}</p>
+                <h2 className="text-2xl sm:text-3xl font-bold mb-2 text-white">{founder.name}</h2>
+                <p className="text-lg sm:text-xl text-primary-300 font-semibold mb-3 sm:mb-4">{founder.title}</p>
+                <p className="text-base sm:text-lg text-primary-400 font-medium mb-4 sm:mb-6">{founder.specialty}</p>
+                <p className="text-gray-300 text-sm sm:text-base md:text-lg leading-relaxed max-w-2xl mx-auto">{founder.bio}</p>
               </div>
               
               <div className="bg-white/5 rounded-2xl p-6 border border-white/10">
@@ -171,24 +171,24 @@ const InstructorsPage: React.FC = () => {
             </p>
           </div>
           
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
             {instructors.map((instructor, index) => (
               <div
                 key={index}
-                className="text-center p-8 bg-white/5 rounded-2xl border border-white/10 hover:bg-white/10 transition-all duration-300 hover:transform hover:-translate-y-2 backdrop-blur-md"
+                className="text-center p-6 sm:p-8 bg-white/5 rounded-2xl border border-white/10 hover:bg-white/10 transition-all duration-300 hover:transform hover:-translate-y-2 backdrop-blur-md"
                 style={{
                   animation: `slideIn 0.6s ease-out ${0.15 * index}s both`
                 }}
               >
-                <div className="mb-6">
+                <div className="mb-4 sm:mb-6">
                   <div className="inline-block p-3 bg-primary-500/20 rounded-full mb-4">
-                    <svg className="w-6 h-6 text-primary-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg className="w-5 h-5 sm:w-6 sm:h-6 text-primary-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
                     </svg>
                   </div>
-                  <h3 className="text-xl font-bold mb-2 text-white">{instructor.name}</h3>
-                  <p className="text-primary-400 font-semibold mb-4">{instructor.specialty}</p>
-                  <p className="text-gray-400 text-sm leading-relaxed">{instructor.bio}</p>
+                  <h3 className="text-lg sm:text-xl font-bold mb-2 text-white">{instructor.name}</h3>
+                  <p className="text-primary-400 font-semibold mb-3 sm:mb-4 text-sm sm:text-base">{instructor.specialty}</p>
+                  <p className="text-gray-400 text-xs sm:text-sm leading-relaxed">{instructor.bio}</p>
                 </div>
               </div>
             ))}
