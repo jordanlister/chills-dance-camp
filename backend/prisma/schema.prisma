@@ -1,0 +1,192 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum UserRole {
+  STUDENT
+  TEACHER
+  VIDEOGRAPHER
+  ADMIN
+}
+
+enum RSVPStatus {
+  CONFIRMED
+  WAITLIST
+  CANCELLED
+}
+
+enum ClassType {
+  REGULAR
+  SPECIAL
+  BREAK
+}
+
+enum InterviewType {
+  BEFORE_CLASS
+  AFTER_CLASS
+}
+
+model User {
+  id           String   @id @default(cuid())
+  email        String   @unique
+  passwordHash String   @map("password_hash")
+  firstName    String   @map("first_name")
+  lastName     String   @map("last_name")
+  role         UserRole @default(STUDENT)
+  profilePhoto String?  @map("profile_photo")
+  isActive     Boolean  @default(true) @map("is_active")
+  lastLoginAt  DateTime? @map("last_login_at")
+  createdAt    DateTime @default(now()) @map("created_at")
+  updatedAt    DateTime @updatedAt @map("updated_at")
+
+  // Relations
+  teacher      Teacher?
+  rsvps        RSVP[]
+  auditLogs    AuditLog[]
+  refreshTokens RefreshToken[]
+
+  @@map("users")
+}
+
+model Teacher {
+  id           String   @id @default(cuid())
+  userId       String   @unique @map("user_id")
+  bio          String?
+  profilePhoto String?  @map("profile_photo")
+  specialties  String[]
+  contactInfo  String?  @map("contact_info")
+  isVerified   Boolean  @default(false) @map("is_verified")
+  createdAt    DateTime @default(now()) @map("created_at")
+  updatedAt    DateTime @updatedAt @map("updated_at")
+
+  // Relations
+  user    User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  classes Class[]
+
+  @@map("teachers")
+}
+
+model Class {
+  id           String    @id @default(cuid())
+  title        String
+  description  String?
+  instructorId String    @map("instructor_id")
+  date         DateTime
+  startTime    DateTime  @map("start_time")
+  endTime      DateTime  @map("end_time")
+  capacity     Int       @default(30)
+  type         ClassType @default(REGULAR)
+  location     String?
+  requirements String[]
+  isActive     Boolean   @default(true) @map("is_active")
+  createdAt    DateTime  @default(now()) @map("created_at")
+  updatedAt    DateTime  @updatedAt @map("updated_at")
+
+  // Relations
+  instructor Teacher     @relation(fields: [instructorId], references: [id])
+  rsvps      RSVP[]
+  interviews Interview[]
+
+  @@map("classes")
+}
+
+model RSVP {
+  id        String     @id @default(cuid())
+  userId    String     @map("user_id")
+  classId   String     @map("class_id")
+  status    RSVPStatus @default(CONFIRMED)
+  createdAt DateTime   @default(now()) @map("created_at")
+  updatedAt DateTime   @updatedAt @map("updated_at")
+
+  // Relations
+  user  User  @relation(fields: [userId], references: [id], onDelete: Cascade)
+  class Class @relation(fields: [classId], references: [id], onDelete: Cascade)
+
+  // Constraints
+  @@unique([userId, classId])
+  @@map("rsvps")
+}
+
+model Interview {
+  id            String        @id @default(cuid())
+  classId       String        @map("class_id")
+  scheduledTime DateTime      @map("scheduled_time")
+  type          InterviewType
+  notes         String?
+  completed     Boolean       @default(false)
+  createdAt     DateTime      @default(now()) @map("created_at")
+  updatedAt     DateTime      @updatedAt @map("updated_at")
+
+  // Relations
+  class Class @relation(fields: [classId], references: [id], onDelete: Cascade)
+
+  @@map("interviews")
+}
+
+model RefreshToken {
+  id        String   @id @default(cuid())
+  userId    String   @map("user_id")
+  tokenHash String   @unique @map("token_hash")
+  expiresAt DateTime @map("expires_at")
+  createdAt DateTime @default(now()) @map("created_at")
+
+  // Relations
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([expiresAt])
+  @@map("refresh_tokens")
+}
+
+model AuditLog {
+  id         String   @id @default(cuid())
+  userId     String?  @map("user_id")
+  action     String
+  resource   String
+  resourceId String?  @map("resource_id")
+  ipAddress  String   @map("ip_address")
+  userAgent  String?  @map("user_agent")
+  details    Json?
+  timestamp  DateTime @default(now())
+
+  // Relations
+  user User? @relation(fields: [userId], references: [id])
+
+  @@index([userId])
+  @@index([timestamp])
+  @@index([action])
+  @@map("audit_logs")
+}
+
+model SystemSettings {
+  key       String   @id
+  value     Json
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  @@map("system_settings")
+}
+
+model EmailQueue {
+  id          String   @id @default(cuid())
+  to          String
+  subject     String
+  template    String
+  data        Json
+  priority    String   @default("normal")
+  attempts    Int      @default(0)
+  sentAt      DateTime? @map("sent_at")
+  failedAt    DateTime? @map("failed_at")
+  error       String?
+  createdAt   DateTime @default(now()) @map("created_at")
+
+  @@index([sentAt])
+  @@index([priority])
+  @@map("email_queue")
+}
