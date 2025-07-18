@@ -2,6 +2,8 @@
 
 A comprehensive full-stack web application for managing dance camp schedules with role-based access for students, teachers, videographers, and administrators.
 
+**About Chills Dance Camp**: Located in Los Angeles, Chills Dance Camp is where feminine energy, technique, and community come together — creating a dance experience you'll never forget. The camp offers 12 intensive dance classes with top instructors, empowering lectures and discussions, and creative networking sessions, all in partnership with Vamp Heels.
+
 ## 🎨 Design & Features
 
 - **Dark Theme**: Sleek black background with coral gradient branding
@@ -9,6 +11,8 @@ A comprehensive full-stack web application for managing dance camp schedules wit
 - **Role-Based Access**: Different experiences for Students, Teachers, Videographers, and Admins
 - **Real-time Updates**: WebSocket integration for live RSVP updates
 - **Professional UI**: Glass morphism effects and smooth animations
+- **Feminine Focus**: Celebrating feminine energy, technique, and community
+- **Empowerment**: Fostering confidence and self-expression through dance
 
 ## 🏗️ Architecture
 
@@ -119,25 +123,25 @@ A comprehensive full-stack web application for managing dance camp schedules wit
 ## 📅 Schedule (July 18-20, 2025)
 
 ### Friday, July 18
-- Divine Femme (Taisha Monique)
-- Floorplay (Adison Briana)
-- VibeZ (Venetia Zipporah)
-- Lecture: Journey to Your Dance Signature
-- Heels Feels (Hector Kramer)
+- **Divine Femme** (Taisha Monique) - Embrace your divine feminine energy
+- **Floorplay** (Adison Briana) - Master floor techniques and flow
+- **VibeZ** (Venetia Zipporah) - High-energy choreography and good vibes
+- **Lecture: Journey to Your Dance Signature** - Industry panel discussion
+- **Heels Feels** (Hector Kramer) - Express emotions through powerful heels
 
 ### Saturday, July 19
-- Heels (Kiira Harper)
-- Stage Confidence Heels (Brinn Nicole)
-- Twerk (Nika Chill)
-- Lecture: From Passion to Profession
-- Street Heels (Nicole Kirkland + Zonta)
+- **Heels** (Kiira Harper) - Fundamental heels technique and style
+- **Stage Confidence Heels** (Brinn Nicole) - Build performance confidence
+- **Twerk** (Nika Chill) - Authentic twerk technique with LA's top instructor
+- **Lecture: From Passion to Profession** - Women who built their legacy
+- **Street Heels** (Nicole Kirkland + Zonta) - Collaborative street-meets-heels
 
 ### Sunday, July 20
-- Heartbreak Heels (Marissa Heart)
-- Hip-hop (Deanna Leggett)
-- Vogue Femme (Polina Glen)
-- Heels Contemporary (Skyler Hostetler)
-- Chills Conversation
+- **Heartbreak Heels** (Marissa Heart) - Emotional storytelling through dance
+- **Hip-hop** (Deanna Leggett) - Street dance and urban styles
+- **Vogue Femme** (Polina Glen) - Ballroom culture and runway techniques
+- **Heels Contemporary** (Skyler Hostetler) - Contemporary dance meets heels
+- **Chills Conversation** - Community discussion and celebration
 
 ## 🎨 Design System
 
@@ -247,10 +251,15 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 
 ## 🙏 Acknowledgments
 
-- **Chills Dance** for the inspiration and design direction
+- **Chills Dance Camp** for the inspiration and design direction
+- **Nika Chill** for leading the twerk classes and camp vision
+- **Marissa Heart** for the Heartbreak Heels brand and empowerment focus
+- **Vamp Heels** for the partnership and professional dance footwear
 - **Dance Camp Community** for feature requirements and feedback
+- **Los Angeles Dance Scene** for the incredible talent and energy
 - **Open Source Libraries** that made this project possible
 
 ---
 
-**Built with ❤️ for the dance community**
+**Built with ❤️ for the dance community**  
+*"Where feminine energy, technique, and community come together"*

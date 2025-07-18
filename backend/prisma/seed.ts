@@ -82,8 +82,8 @@ async function main() {
       email: 'nika@chillsdance.com',
       firstName: 'Nika',
       lastName: 'Chill',
-      bio: 'Twerk specialist and founder of Chills Dance, bringing authentic movement and culture.',
-      specialties: ['Twerk', 'Cultural Dance', 'Authentic Movement'],
+      bio: 'Twerk specialist and founder of Chills Dance Camp. Offers 6 weekly twerk classes in LA and leads 3 transformative days of feminine energy, movement, and connection. Classes are for all levels with no prior experience required.',
+      specialties: ['Twerk', 'Cultural Dance', 'Authentic Movement', 'Feminine Energy'],
     },
     {
       email: 'nicole@chillsdance.com',
@@ -96,8 +96,8 @@ async function main() {
       email: 'marissa@chillsdance.com',
       firstName: 'Marissa',
       lastName: 'Heart',
-      bio: 'Heartbreak Heels instructor specializing in emotional storytelling through dance.',
-      specialties: ['Heartbreak Heels', 'Emotional Storytelling', 'Heels'],
+      bio: 'One of the industry\'s most sought after Heels choreographers with over 700K followers. Creator of "Heartbreak Heels" brand, empowering individuals through dance at Playground LA. Has worked with Kanye West, Justin Bieber, Lady Gaga, and many more.',
+      specialties: ['Heartbreak Heels', 'Emotional Storytelling', 'Heels Choreography', 'Empowerment'],
     },
     {
       email: 'deanna@chillsdance.com',

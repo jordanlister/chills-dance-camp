@@ -4,6 +4,8 @@
 
 The Chills Dance Camp Schedule System is a comprehensive full-stack web application designed to manage dance camp schedules with role-based access for students, teachers, videographers, and administrators. The system features real-time RSVP functionality, professional video production coordination, and comprehensive security measures.
 
+**About Chills Dance Camp**: Located in Los Angeles, Chills Dance Camp is where feminine energy, technique, and community come together — creating a dance experience you'll never forget. The camp offers 12 intensive dance classes with top instructors, empowering lectures and discussions, and creative networking sessions, all in partnership with Vamp Heels.
+
 **Reference Website**: https://www.chillsdance.com/home  
 **Current Status**: ✅ MVP Complete - Dark theme UI with coral gradient branding  
 **Last Updated**: January 2025
