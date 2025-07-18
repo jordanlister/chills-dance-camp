@@ -98,7 +98,14 @@ export const useAuthStore = create<AuthState>()(
 
       loadUser: async () => {
         const token = localStorage.getItem('accessToken');
-        if (!token) return;
+        if (!token) {
+          set({ 
+            user: null, 
+            isAuthenticated: false, 
+            isLoading: false 
+          });
+          return;
+        }
 
         set({ isLoading: true });
         try {
@@ -126,7 +133,7 @@ export const useAuthStore = create<AuthState>()(
       storage: createJSONStorage(() => localStorage),
       partialize: (state) => ({
         user: state.user,
-        isAuthenticated: state.isAuthenticated,
+        // Don't persist isAuthenticated - let it be determined by token validity
       }),
     }
   )

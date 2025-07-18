@@ -1,12 +1,7 @@
 import { useState } from 'react';
-import { useAuthStore } from '../store/authStore';
-import { UserRole } from '../types';
-import PublicNavigation from '../components/PublicNavigation';
-import GradientText from '../components/GradientText';
 
-const SchedulePage: React.FC = () => {
+const ScheduleComponent: React.FC = () => {
   const [activeDay, setActiveDay] = useState(0);
-  const { user } = useAuthStore();
 
   // Static schedule data based on the HTML design
   const scheduleData = {
@@ -20,7 +15,7 @@ const SchedulePage: React.FC = () => {
         { time: '12:00 PM - 1:30 PM', title: 'Floorplay', instructor: 'Adison Briana', type: 'class' },
         { time: '1:35 PM', title: 'Interview: Venetia Zipporah', note: 'Before class', type: 'interview' },
         { time: '2:00 PM - 3:30 PM', title: 'VibeZ', instructor: 'Venetia Zipporah', type: 'class' },
-        { time: '3:30 PM - 4:30 PM', title: 'LUNCH BREAK', type: 'break' },
+        { time: '3:30 PM', title: 'LUNCH BREAK', type: 'break' },
         { time: '4:30 PM - 6:30 PM', title: 'Lecture: Journey to Your Dance Signature', instructor: 'Marissa Heart, Venetia Zipporah, Taisha Monique', type: 'special' },
         { time: '7:00 PM - 8:30 PM', title: 'Heels Feels', instructor: 'Hector Kramer', type: 'class' },
         { time: '8:30 PM', title: 'Interview: Hector Kramer', note: 'After class', type: 'interview' },
@@ -35,7 +30,7 @@ const SchedulePage: React.FC = () => {
         { time: '11:40 AM', title: 'Interview: Brinn Nicole', note: 'Before class', type: 'interview' },
         { time: '12:00 PM - 1:30 PM', title: 'Stage Confidence Heels', instructor: 'Brinn Nicole', type: 'class' },
         { time: '2:00 PM - 3:30 PM', title: 'Twerk', instructor: 'Nika Chill', type: 'class' },
-        { time: '3:30 PM - 4:30 PM', title: 'LUNCH BREAK', type: 'break' },
+        { time: '3:30 PM', title: 'LUNCH BREAK', type: 'break' },
         { time: '3:30 PM', title: 'Interview: Nika Chill', note: 'After class (during lunch)', type: 'interview' },
         { time: '4:30 PM - 6:30 PM', title: 'Lecture: From Passion to Profession', instructor: 'Nicole Kirkland, Nika Chill, Mari G', subtitle: 'Women Who Built Their Legacy', type: 'special' },
         { time: '7:00 PM - 8:30 PM', title: 'Street Heels', instructor: 'Nicole Kirkland + Zonta (Collab Class)', type: 'class' },
@@ -50,7 +45,7 @@ const SchedulePage: React.FC = () => {
         { time: '11:40 AM', title: 'Interview: Deanna Leggett', note: 'Before class', type: 'interview' },
         { time: '12:00 PM - 1:30 PM', title: 'Hip-hop', instructor: 'Deanna Leggett', type: 'class' },
         { time: '2:00 PM - 3:30 PM', title: 'Vogue Femme', instructor: 'Polina Glen', type: 'class' },
-        { time: '3:30 PM - 4:30 PM', title: 'LUNCH BREAK', type: 'break' },
+        { time: '3:30 PM', title: 'LUNCH BREAK', type: 'break' },
         { time: '3:30 PM', title: 'Interview: Polina Glen', note: 'After class (during lunch)', type: 'interview' },
         { time: '4:30 PM - 6:00 PM', title: 'Heels Contemporary', instructor: 'Skyler Hostetler', type: 'class' },
         { time: '6:30 PM - 8:30 PM', title: 'Chills Conversation', type: 'special' },
@@ -75,25 +70,7 @@ const SchedulePage: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen text-white">
-      {/* Navigation */}
-      <PublicNavigation />
-      
-      <div className="container mx-auto px-4 py-8 max-w-4xl pt-24">
-        {/* Header */}
-        <div className="text-center mb-10 animate-fade-in">
-          <GradientText
-            colors={["#ff6b6b", "#ee5a6f", "#c44569", "#9a4560", "#ff6b6b"]}
-            animationSpeed={3}
-            className="text-4xl font-bold tracking-wider mb-2"
-          >
-            DANCE CAMP SCHEDULE
-          </GradientText>
-          <p className="text-gray-400 text-lg">
-            {user?.role === UserRole.VIDEOGRAPHER ? 'Videographer Timeline' : 'Class Schedule'}
-          </p>
-        </div>
-
+    <div className="w-full">
       {/* Day Tabs */}
       <div className="flex gap-5 mb-10 justify-center animate-slide-in">
         {days.map((day, index) => (
@@ -131,57 +108,49 @@ const SchedulePage: React.FC = () => {
             </div>
 
             {/* Events */}
-            {day.events.map((event, index) => {
-              // Only show interviews to teachers and videographers
-              if (event.type === 'interview' && (!user || (user.role !== 'TEACHER' && user.role !== 'VIDEOGRAPHER'))) {
-                return null;
-              }
-              
-              return (
-                <div
-                  key={index}
-                  className={getEventCardClass(event.type)}
-                  style={{
-                    animation: `slideIn 0.5s ease-out ${0.1 * index}s both`
-                  }}
-                >
-                  <div className="relative z-10">
-                    {event.type === 'interview' && (
-                      <span className="inline-block w-2 h-2 bg-secondary-500 rounded-full mr-2"></span>
-                    )}
-                    <div className={`text-sm font-medium mb-2 ${
-                      event.type === 'interview' ? 'text-purple-300' : 'text-primary-400'
-                    }`}>
-                      {event.time}
-                    </div>
-                    <div className="text-xl font-light mb-1 text-white">
-                      {event.title}
-                    </div>
-                    {event.instructor && (
-                      <div className="text-gray-400">
-                        {event.instructor}
-                      </div>
-                    )}
-                    {event.subtitle && (
-                      <div className="inline-block px-3 py-1 bg-primary-500 bg-opacity-20 rounded-full text-sm mt-2">
-                        {event.subtitle}
-                      </div>
-                    )}
-                    {event.note && (
-                      <div className="text-purple-300 text-sm mt-1 italic">
-                        {event.note}
-                      </div>
-                    )}
+            {day.events.map((event, index) => (
+              <div
+                key={index}
+                className={getEventCardClass(event.type)}
+                style={{
+                  animation: `slideIn 0.5s ease-out ${0.1 * index}s both`
+                }}
+              >
+                <div className="relative z-10">
+                  {event.type === 'interview' && (
+                    <span className="inline-block w-2 h-2 bg-secondary-500 rounded-full mr-2"></span>
+                  )}
+                  <div className={`text-sm font-medium mb-2 ${
+                    event.type === 'interview' ? 'text-purple-300' : 'text-primary-400'
+                  }`}>
+                    {event.time}
                   </div>
+                  <div className="text-xl font-light mb-1 text-white">
+                    {event.title}
+                  </div>
+                  {event.instructor && (
+                    <div className="text-gray-400">
+                      {event.instructor}
+                    </div>
+                  )}
+                  {event.subtitle && (
+                    <div className="inline-block px-3 py-1 bg-primary-500 bg-opacity-20 rounded-full text-sm mt-2">
+                      {event.subtitle}
+                    </div>
+                  )}
+                  {event.note && (
+                    <div className="text-purple-300 text-sm mt-1 italic">
+                      {event.note}
+                    </div>
+                  )}
                 </div>
-              );
-            })}
+              </div>
+            ))}
           </div>
         ))}
-      </div>
       </div>
     </div>
   );
 };
 
-export default SchedulePage;
+export default ScheduleComponent;

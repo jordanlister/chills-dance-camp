@@ -12,10 +12,11 @@
   body {
     @apply font-sans antialiased;
     @apply text-white min-h-screen;
-    background: #000000 !important;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     line-height: 1.6;
     overflow-x: hidden;
+    background: #000000;
+    position: relative;
   }
   
   * {
@@ -57,12 +58,13 @@
   }
   
   .event-card {
-    @apply bg-white bg-opacity-5 rounded-2xl border border-white border-opacity-10 p-6 mb-5;
-    backdrop-filter: blur(10px);
+    @apply bg-black bg-opacity-70 rounded-2xl border border-white border-opacity-20 p-6 mb-5;
+    backdrop-filter: blur(20px);
     transition: all 0.3s ease;
     cursor: pointer;
     position: relative;
     overflow: hidden;
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.8), rgba(30, 30, 30, 0.85));
   }
   
   .event-card::before {
@@ -82,8 +84,8 @@
   
   .event-card:hover {
     transform: translateX(10px);
-    @apply bg-opacity-10 border-opacity-30;
-    box-shadow: 0 10px 30px rgba(255, 107, 107, 0.1);
+    @apply bg-opacity-90 border-opacity-40;
+    box-shadow: 0 10px 30px rgba(255, 107, 107, 0.2);
   }
   
   .event-card.break {
@@ -97,12 +99,13 @@
   }
   
   .interview-card {
-    @apply bg-secondary-500 bg-opacity-10 border-secondary-500 border-opacity-30 p-5 mb-5 rounded-2xl;
-    backdrop-filter: blur(10px);
+    @apply bg-secondary-500 bg-opacity-20 border-secondary-500 border-opacity-40 p-5 mb-5 rounded-2xl;
+    backdrop-filter: blur(20px);
     transition: all 0.3s ease;
     cursor: pointer;
     position: relative;
     overflow: hidden;
+    background: linear-gradient(135deg, rgba(138, 43, 226, 0.2), rgba(90, 25, 150, 0.25));
   }
   
   .interview-card::before {
@@ -122,8 +125,8 @@
   
   .interview-card:hover {
     transform: translateX(10px);
-    @apply bg-opacity-15;
-    box-shadow: 0 10px 30px rgba(138, 43, 226, 0.2);
+    @apply bg-opacity-30;
+    box-shadow: 0 10px 30px rgba(138, 43, 226, 0.3);
   }
   
   .input {
@@ -227,4 +230,177 @@
 /* Focus states for accessibility */
 .focus-visible:focus {
   @apply outline-none ring-2 ring-primary-500 ring-offset-2;
+}
+
+/* Slide in animation for elements */
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Modal animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes modalSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* 3D Glass Crystal CHILLS Logo */
+.chills-logo {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 900;
+  letter-spacing: 0.15em;
+  position: relative;
+  display: inline-block;
+  transform-style: preserve-3d;
+}
+
+.chills-text {
+  /* Glass/Crystal base */
+  background: linear-gradient(135deg, 
+    rgba(255, 255, 255, 0.1) 0%,
+    rgba(255, 107, 107, 0.3) 25%,
+    rgba(138, 43, 226, 0.4) 50%,
+    rgba(255, 215, 0, 0.3) 75%,
+    rgba(255, 255, 255, 0.1) 100%
+  );
+  background-size: 400% 400%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: crystalGlow 4s ease-in-out infinite;
+  
+  /* 3D Glass Effect with depth */
+  text-shadow: 
+    /* Main depth layers */
+    0 1px 0 rgba(255, 107, 107, 0.8),
+    0 2px 0 rgba(255, 87, 87, 0.7),
+    0 3px 0 rgba(255, 67, 67, 0.6),
+    0 4px 0 rgba(255, 47, 47, 0.5),
+    0 5px 0 rgba(255, 27, 27, 0.4),
+    0 6px 0 rgba(235, 7, 7, 0.3),
+    0 7px 0 rgba(215, 0, 0, 0.2),
+    0 8px 0 rgba(195, 0, 0, 0.1),
+    
+    /* Purple/violet reflections */
+    -1px 1px 0 rgba(138, 43, 226, 0.4),
+    -2px 2px 0 rgba(138, 43, 226, 0.3),
+    -3px 3px 0 rgba(138, 43, 226, 0.2),
+    
+    /* Gold highlights */
+    1px -1px 0 rgba(255, 215, 0, 0.3),
+    2px -2px 0 rgba(255, 215, 0, 0.2),
+    
+    /* Glow and blur effects */
+    0 0 10px rgba(255, 107, 107, 0.5),
+    0 0 20px rgba(255, 107, 107, 0.3),
+    0 0 30px rgba(138, 43, 226, 0.2),
+    0 0 40px rgba(255, 215, 0, 0.1),
+    0 10px 25px rgba(0, 0, 0, 0.3);
+  
+  position: relative;
+  filter: drop-shadow(0 5px 15px rgba(255, 107, 107, 0.4));
+}
+
+.chills-text::before {
+  content: 'CHILLS';
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: linear-gradient(45deg, 
+    transparent 20%, 
+    rgba(255, 255, 255, 0.9) 40%,
+    rgba(255, 215, 0, 0.8) 50%,
+    rgba(255, 255, 255, 0.9) 60%,
+    transparent 80%
+  );
+  background-size: 300% 300%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: glassShine 5s ease-in-out infinite;
+  z-index: 2;
+}
+
+.chills-text::after {
+  content: 'CHILLS';
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: linear-gradient(90deg, 
+    transparent 0%,
+    rgba(138, 43, 226, 0.6) 30%,
+    rgba(255, 107, 107, 0.4) 50%,
+    rgba(255, 215, 0, 0.5) 70%,
+    transparent 100%
+  );
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: crystalReflection 6s ease-in-out infinite;
+  z-index: 1;
+}
+
+@keyframes crystalGlow {
+  0%, 100% {
+    background-position: 0% 50%;
+    filter: brightness(1) contrast(1.1);
+  }
+  33% {
+    background-position: 100% 50%;
+    filter: brightness(1.3) contrast(1.2);
+  }
+  66% {
+    background-position: 0% 100%;
+    filter: brightness(1.1) contrast(1.15);
+  }
+}
+
+@keyframes glassShine {
+  0%, 100% {
+    background-position: -300% 0;
+    opacity: 0;
+  }
+  20% {
+    opacity: 0.8;
+  }
+  50% {
+    background-position: 300% 0;
+    opacity: 1;
+  }
+  80% {
+    opacity: 0.6;
+  }
+}
+
+@keyframes crystalReflection {
+  0%, 100% {
+    background-position: 0% 50%;
+    opacity: 0.3;
+  }
+  50% {
+    background-position: 100% 50%;
+    opacity: 0.7;
+  }
 }

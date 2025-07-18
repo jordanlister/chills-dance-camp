@@ -7,8 +7,13 @@ import { websocketService } from './services/websocket';
 import Layout from './components/Layout';
 import ProtectedRoute from './components/ProtectedRoute';
 import LoadingSpinner from './components/LoadingSpinner';
+import DarkVeil from './components/DarkVeil';
 
 // Pages
+import LandingPage from './pages/LandingPage';
+import AboutPage from './pages/AboutPage';
+import InstructorsPage from './pages/InstructorsPage';
+import VenuePage from './pages/VenuePage';
 import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
 import DashboardPage from './pages/DashboardPage';
@@ -24,7 +29,7 @@ function App() {
   const { isAuthenticated, isLoading, user, loadUser } = useAuthStore();
 
   useEffect(() => {
-    // Load user on app start
+    // Load user on app start to verify token validity
     loadUser();
   }, [loadUser]);
 
@@ -45,7 +50,8 @@ function App() {
     };
   }, [isAuthenticated, user]);
 
-  if (isLoading) {
+  // Only show loading spinner for initial auth check on protected routes
+  if (isLoading && (window.location.pathname === '/' || window.location.pathname.startsWith('/dashboard'))) {
     return (
       <div className="min-h-screen flex items-center justify-center">
         <LoadingSpinner size="large" />
@@ -55,14 +61,48 @@ function App() {
 
   return (
     <Router>
-      <div className="min-h-screen bg-black">
-        <Routes>
+      <div className="min-h-screen bg-black relative">
+        {/* WebGL Background */}
+        <div className="fixed inset-0 z-0" style={{ width: '100vw', height: '100vh', left: 0, top: 0 }}>
+          <DarkVeil 
+            hueShift={20}
+            speed={0.8}
+            warpAmount={0.1}
+            resolutionScale={0.8}
+          />
+        </div>
+        
+        {/* Content */}
+        <div className="relative z-10">
+          <Routes>
           {/* Public routes */}
+          <Route 
+            path="/" 
+            element={
+              isAuthenticated ? (
+                <Navigate to="/dashboard" replace />
+              ) : (
+                <LandingPage />
+              )
+            } 
+          />
+          <Route 
+            path="/about" 
+            element={<AboutPage />} 
+          />
+          <Route 
+            path="/instructors" 
+            element={<InstructorsPage />} 
+          />
+          <Route 
+            path="/venue" 
+            element={<VenuePage />} 
+          />
           <Route 
             path="/login" 
             element={
               isAuthenticated ? (
-                <Navigate to="/" replace />
+                <Navigate to="/dashboard" replace />
               ) : (
                 <LoginPage />
               )
@@ -72,16 +112,19 @@ function App() {
             path="/register" 
             element={
               isAuthenticated ? (
-                <Navigate to="/" replace />
+                <Navigate to="/dashboard" replace />
               ) : (
                 <RegisterPage />
               )
             } 
           />
+          
+          {/* Public schedule route */}
+          <Route path="/schedule" element={<SchedulePage />} />
 
           {/* Protected routes */}
           <Route
-            path="/"
+            path="/dashboard"
             element={
               <ProtectedRoute>
                 <Layout />
@@ -116,7 +159,8 @@ function App() {
 
           {/* Catch all - redirect to home */}
           <Route path="*" element={<Navigate to="/" replace />} />
-        </Routes>
+          </Routes>
+        </div>
       </div>
     </Router>
   );

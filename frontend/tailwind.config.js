@@ -103,6 +103,7 @@ export default {
         'shimmer': 'shimmer 2s linear infinite',
         'fade-in': 'fadeIn 0.8s ease-out',
         'slide-in': 'slideIn 0.8s ease-out 0.2s both',
+        'gradient': 'gradient 8s linear infinite',
       },
       keyframes: {
         shimmer: {
@@ -116,6 +117,11 @@ export default {
         slideIn: {
           '0%': { opacity: '0', transform: 'translateY(20px)' },
           '100%': { opacity: '1', transform: 'translateY(0)' },
+        },
+        gradient: {
+          '0%': { backgroundPosition: '0% 50%' },
+          '50%': { backgroundPosition: '100% 50%' },
+          '100%': { backgroundPosition: '0% 50%' },
         },
       },
     },
